@@ -1,0 +1,19 @@
+.background {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, #FFB6C1, #FF69B4);
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  animation: float 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes float {
+  0%, 100% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+}
