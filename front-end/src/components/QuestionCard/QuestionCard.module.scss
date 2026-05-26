@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  padding: 0 24px;
 }
 
 .pergunta {
@@ -14,6 +15,10 @@
   text-align: center;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   max-width: 600px;
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
 }
 
 .negacao {
@@ -22,6 +27,18 @@
   text-align: center;
   font-style: italic;
   animation: fadeIn 0.3s ease;
+
+  @media (max0width: 480px){
+    font-size: 0.85rem;
+  }
+}
+
+.botoes {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
 .botaoSim, .botaoNao {
@@ -38,6 +55,11 @@
   &:hover {
     transform: scale(1.08);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 480px){
+    font-size: 1rem;
+    padding: 10px 32px;
   }
 }
 

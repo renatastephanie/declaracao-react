@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import styles from "./QuestionCard.module.scss";
 
 const PERGUNTAS = [
@@ -41,43 +41,51 @@ export const QuestionCard = ({ onFinish }: QuestionCardProps) => {
       return;
     }
 
-    setIndice(prev => prev + 1)
+    setIndice((prev) => prev + 1);
     setMensagemNegacao("");
   };
 
   const handleNao = () => {
-    const mensagem = MENSAGENS_NEGACAO[Math.floor(Math.random() * MENSAGENS_NEGACAO.length)]
+    const mensagem =
+      MENSAGENS_NEGACAO[Math.floor(Math.random() * MENSAGENS_NEGACAO.length)];
     setMensagemNegacao(mensagem);
-  }
+  };
 
   const handleMouseEnterNao = () => {
     if (isUltimaPergunta) {
-      setNaoPos({x: Math.random() * 80 + 10, y: Math.random() * 80 + 10})
+      setNaoPos({
+        x: Math.random() * 60 + 10,
+        y: Math.random() * 60 + 10
+      });
     }
-  }
+  };
 
   return (
     <div className={styles.card}>
       <p className={styles.pergunta}>{PERGUNTAS[indice]}</p>
-      
-      {mensagemNegacao && (
-        <p className={styles.negacao}>{mensagemNegacao}</p>
-      )}
 
-      <button className={styles.botaoSim} onClick={handleSim}>Sim</button>
-      <button
-        className={styles.botaoNao}
-        onClick={handleNao}
-        onMouseEnter={handleMouseEnterNao}
-        style={isUltimaPergunta ? {
-          position: 'fixed',
-          left: `${naoPos.x}%`,
-          top: `${naoPos.y}%`,
-        } : {}}
-      >
-        Não
-      </button>
+      {mensagemNegacao && <p className={styles.negacao}>{mensagemNegacao}</p>}
 
+      <div className={styles.botoes}>
+        <button className={styles.botaoSim} onClick={handleSim}>
+          Sim
+        </button>
+        <button
+          className={styles.botaoNao}
+          onClick={handleNao}
+          onMouseEnter={handleMouseEnterNao}
+          style={
+            isUltimaPergunta
+              ? {
+                  position: "fixed",
+                  left: `${naoPos.x}%`,
+                  top: `${naoPos.y}%`,
+                }
+              : {}
+          }>
+          Não
+        </button>
+      </div>
     </div>
-  )
+  );
 };
